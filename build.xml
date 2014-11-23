@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="hello-world" default="compile" basedir=".">
+
+    <property file="build.properties"/>
+    
+    <path id="jars">
+        <fileset dir="${libs.home}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${classes}"/>
+    </target>
+    
+    <target name="compile" depends="init">
+        <javac srcdir="${src}/Entidades" destdir="${classes}" includeantruntime="false">
+            <classpath refid="jars" />
+        </javac>
+        <javac srcdir="${src}/Interfaces" destdir="${classes}" includeantruntime="false">
+            <classpath refid="jars" />
+        </javac>
+        <javac srcdir="${src}/Controles" destdir="${classes}" includeantruntime="false">
+            <classpath refid="jars" />
+        </javac>
+    </target>
+
+    <target name="clean">
+        <delete dir="${entidades}"/>
+        <delete dir="${controles}"/>
+        <delete dir="${interfaces}"/>
+        <delete dir="${classes}"/>
+    </target>
+
+</project>
