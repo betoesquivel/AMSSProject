@@ -25,7 +25,7 @@ public class ControlMaestro {
    //Prepara la conexión que comparte con las entidades
    public ControlMaestro(){
       conexion = new Conexion();
-      cuenta = new Cuenta();
+      cuenta = new Cuenta(conexion);
       autor = new Autor(conexion);
       autorArt = new AutorArticulo(conexion);
       cartaEditor = new CartaEditorJefe(conexion);

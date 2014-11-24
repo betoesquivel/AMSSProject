@@ -49,7 +49,7 @@ public class InterfazRegistrar extends HttpServlet {
     out.println("</form>");
 
     out.println("<form method=\"GET\" action=\"menu.html\">");
-    out.println("<p>cancelar <input type=\"submit\" value=\"Cancelar\"name=\"B2\"></p>");
+    out.println("<p><input type=\"submit\" value=\"Cancelar\"name=\"B2\"></p>");
     out.println("</form>");
 
     out.println("</BODY>");

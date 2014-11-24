@@ -9,8 +9,8 @@ public class Cuenta {
 	public String contrasenia;
   public String tipo;
 	public transient Conexion conn;
-  public Connection conn2;
-  public Statement stmt2;
+//  public Connection conn2;
+//  public Statement stmt2;
 
 
   // Para cuando ocupo atributos de la cuenta
@@ -28,16 +28,16 @@ public class Cuenta {
 	}
 
   // Para cuando solamente ocupo la conexion con la db...
-	public Cuenta(){
-		//this.conn = c;
-      try {
-        String userName = "root";
-        String password = "";
-        String url = "jdbc:mysql://localhost/eya";
-        Class.forName ("com.mysql.jdbc.Driver").newInstance();
-        conn2 = DriverManager.getConnection (url, userName, password);
-        stmt2 = conn.createStatement();
-      }catch (Exception e) { System.out.println ("Cannot connect to database server"); }
+	public Cuenta(Conexion c){
+		this.conn = c;
+//      try {
+//        String userName = "root";
+//        String password = "";
+//        String url = "jdbc:mysql://localhost/cajero";
+//        Class.forName ("com.mysql.jdbc.Driver").newInstance();
+//        conn2 = DriverManager.getConnection(url, userName, password);
+//        stmt2 = conn2.createStatement();
+//      }catch (Exception e) { System.out.println ("Cannot connect to database server"); }
 	}
 
 	public boolean setCuenta(Cuenta c) {
@@ -77,21 +77,19 @@ public class Cuenta {
 	}
 
 	public boolean agregar(Cuenta nuevaCuenta){
-    if ( conn2 == null ) return false;
-    /*
+    if ( conn.stmt == null ) return false;
     try {
       String s = "INSERT INTO cuenta (usuario, contrasenia, tipo)" +
         " VALUES ('" + nuevaCuenta.usuario + "', '" + nuevaCuenta.contrasenia + "', '" + nuevaCuenta.tipo + "')";
 
 
-      stmt2.executeUpdate(s);
+      conn.stmt.executeUpdate(s);
 
     }catch (SQLException e) {
       return false;
     }catch (NullPointerException n){
       return false;
     }
-    */
 		return true;
 	}
 
