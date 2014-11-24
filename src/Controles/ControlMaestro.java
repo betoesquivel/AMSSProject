@@ -20,12 +20,12 @@ public class ControlMaestro {
    SubscriptorPub subscriptorPub;
    TemaSugerido temaSugerido;
 
-   private transient Conexion conexion;
+   public transient Conexion conexion;
 
    //Prepara la conexión que comparte con las entidades
-   ControlMaestro(){
+   public ControlMaestro(){
       conexion = new Conexion();
-      cuenta = new Cuenta(conexion);
+      cuenta = new Cuenta();
       autor = new Autor(conexion);
       autorArt = new AutorArticulo(conexion);
       cartaEditor = new CartaEditorJefe(conexion);
@@ -42,19 +42,8 @@ public class ControlMaestro {
       temaSugerido = new TemaSugerido(conexion);
    }
 
-   public boolean crearCuenta(String usr, String contrasenia){
-     Cuenta nueva = new Cuenta(usr, contrasenia, "sub");
+   public boolean crearCuenta(String usr, String contrasenia, String tipo){
+     Cuenta nueva = new Cuenta(usr, contrasenia, tipo);
      return cuenta.agregar(nueva);
    }
 }
-/*
-  public Vector<Orden> obtenerOrdenes (int ncliente){
-      cliente = new Cliente();
-      return cliente.obtenerOrdenes(ncliente);
-   }
-
-   public Vector<Producto> obtenerProductos (int norden){
-      orden = new Orden();
-      return orden.obtenerProductos(norden);
-   }
-*/

@@ -18,10 +18,10 @@
         <javac srcdir="${src}/Entidades" destdir="${classes}" includeantruntime="false">
             <classpath refid="jars" />
         </javac>
-        <javac srcdir="${src}/Interfaces" destdir="${classes}" includeantruntime="false">
+        <javac srcdir="${src}/Controles" destdir="${classes}" includeantruntime="false">
             <classpath refid="jars" />
         </javac>
-        <javac srcdir="${src}/Controles" destdir="${classes}" includeantruntime="false">
+        <javac srcdir="${src}/Interfaces" destdir="${classes}" includeantruntime="false">
             <classpath refid="jars" />
         </javac>
     </target>
