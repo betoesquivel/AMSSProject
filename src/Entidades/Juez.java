@@ -17,9 +17,9 @@ public class Juez {
 	   this.nombre = nombre;
    }
 
-   public Juez getJuez(int id) {
+   public Juez getJuez(String nom) {
        try {
-           conn.stmt.executeQuery ("SELECT * FROM juez WHERE id = " + id);
+           conn.stmt.executeQuery ("SELECT * FROM juez WHERE nombre = '" + nom "'");
            ResultSet rs = conn.stmt.getResultSet();
            if (rs.next()) { //Va al primer registro si lo hay
                this.id = rs.getInt ("id");

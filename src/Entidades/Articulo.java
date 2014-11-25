@@ -77,7 +77,16 @@ public class Articulo {
 	      }catch (SQLException e) { System.out.println ("Cannot delete Articulo" + e ); return false;}
 		return true;
 	   }
+	public boolean evaluarArticulo(int idA, int idJ, int c, String coment) {
 
+		try {
+			String s = "INSERT INTO evaluacionArticulo (idArticulo, idJuez, comentarios, evaluacion)" +
+				" VALUES (" + idA + ", " + idJ + ", '" + coment + "', " + c + " )";
+			System.out.println(s);
+			conn.stmt.executeUpdate(s);
+		} catch (SQLException e) { System.out.println ("Cannot insert evaluacion" + e); return false; }
+			return true;
+	}
 
 
 }
