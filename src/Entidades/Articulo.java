@@ -57,10 +57,10 @@ public class Articulo {
 		return null;
 	   }
 
-	   public boolean agregar(int id, String titulo, String contenido, Date fechaPub, Date fechaEsc){
+	   public boolean agregar(String titulo, String contenido, Date fechaPub, Date fechaEsc){
 	      try {
-		 String s = "INSERT INTO articulo (id, titulo, contenido, fechaPublicacion, FechaEscritura)" +
-		           " VALUES ("+ id + " , '" + titulo + " , '" + contenido + "', " + fechaPub + "', " + fechaEsc + " )";
+		 String s = "INSERT INTO articulo (titulo, contenido, fechaPublicacion, FechaEscritura)" +
+		           " VALUES ('" + titulo + " , '" + contenido + "', " + fechaPub + "', " + fechaEsc + " )";
 		 System.out.println(s);
 		 conn.stmt.executeUpdate(s);
 
