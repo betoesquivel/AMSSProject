@@ -46,4 +46,10 @@ public class ControlMaestro {
      Cuenta nueva = new Cuenta(usr, contrasenia, tipo);
      return cuenta.agregar(nueva);
    }
+
+   public boolean iniciarSesion(String usr, String contr, String tipo) {
+       Cuenta verificar;
+       verificar = cuenta.getCuenta(usr);
+       return (verificar.usuario == usr && verificar.contrasenia == contr);
+   }
 }

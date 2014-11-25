@@ -59,9 +59,9 @@ public class Cuenta {
 	}
 
 
-	public Cuenta getCuenta(int id){
+	public Cuenta getCuenta(String u){
 		try {
-			conn.stmt.executeQuery ("SELECT id, usuario, contrasenia FROM cuenta WHERE id = " + id);
+			conn.stmt.executeQuery ("SELECT id, usuario, contrasenia FROM cuenta WHERE id = " + u);
 			ResultSet rs = conn.stmt.getResultSet();
 			if (rs.next()) { //Va al primer registro si lo hay
 				int nCuenta = rs.getInt ("id");
