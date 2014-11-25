@@ -7,6 +7,7 @@ public class Publicacion {
 	public int id;
 	public int idJefe;
 	public int idCarta;
+	public String titulo;
 	public String tema;
 	private transient Conexion conn;
 
@@ -14,6 +15,8 @@ public class Publicacion {
 		this.id = i;
 		this.idJefe = ij;
 		this.idCarta = ic;
+		this.titulo = ti;
+		this.tema = te;
 	}
 
 	public Publicacion(Conexion c){
@@ -25,15 +28,17 @@ public class Publicacion {
 		int i;
 		int ij;
 		int ic;
-		String t;
+		String ti;
+		String te;
 
 		i = a.id;
 		ij = a.idJefe;
 		ic = a.idCarta;
-		t = a.tema;
+		ti = a.titulo;
+		te = a.tema;
 
 		try {
-			String s = "UPDATE publicacion SET id = " + i + ", idJefe = " + ij + ", idCarta = " + ic + ", tema = " + t + " WHERE id = " + i;
+			String s = "UPDATE publicacion SET id = " + i + ", idJefe = " + ij + ", idCarta = " + ic + ", titulo = " + ti + ", tema = "+ te + " WHERE id = " + i;
 			conn.stmt.executeUpdate(s);
 
 		}catch (SQLException e) {System.out.println ("Cannot update Publicacion" + e); return false;}
