@@ -47,7 +47,8 @@ public class InterfazRegistrar extends HttpServlet {
       //La funcion trim() elimina espacios antes y despues del valor
       String usuario = thisRequest.getParameter("usuario").trim();
       String contrasenia = thisRequest.getParameter("contrasenia").trim();
-      boolean existente = cm.crearCuenta(usuario, contrasenia, "sub");
+      String tipo = thisRequest.getParameter("tipo").trim();
+      boolean existente = cm.crearCuenta(usuario, contrasenia, tipo);
       if (!existente){
         iniciarRegistro();
       }

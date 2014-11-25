@@ -1,5 +1,3 @@
-@import entidades.*;
-@import java.util.ArrayList;
 @args String title, String op, String instrucciones, ArrayList<Publicacion> pubs
 <!DOCTYPE html>
 <html>
@@ -19,10 +17,14 @@
       @if(op.equals("")) {
         <p>@instrucciones</p>
         <form action="consultar" method="GET">
-          @for( Publicacion p : pubs ){
-            <p>Algo</p>
-          }
-        </form>
+          
+          @{
+            for( Publicacion p : pubs ){
+              <p>Algo</p>
+            }
+
+          }        
+          </form>
 
         <form action="menu.html" method="GET">
           <p> <input type="submit" name="B2" id="B2" value="Cancelar" /></p>
