@@ -10,6 +10,7 @@ public class InterfazRegistrar extends HttpServlet {
   HttpServletResponse thisResponse;
   HttpServletRequest thisRequest;
   PrintWriter out;
+  String pathPrefix = "/var/lib/tomcat7/webapps/EYA/";
   ControlMaestro cm;
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
@@ -21,20 +22,11 @@ public class InterfazRegistrar extends HttpServlet {
     //Aqui puedo empezar a preparar los templates
     out = thisResponse.getWriter();
     //Preparar el encabezado de la pagina Web de respuesta
-    out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">");
-    out.println("<HTML>");
-    out.println("<HEAD>");
-    out.println("<META http-equiv=Content-Type content=\"text/html\">");
-    out.println("</HEAD>");
-    out.println("<BODY>");
-    out.println("<TITLE>Banco AMSS</TITLE>");
-    out.println(Rythm.render("template.html", username, contrasenia));
-    out.println("<h2>Cajero Electronico</h2>");
-    out.println("<h3>Extraer efectivo</h3>");
 
     String operacion = request.getParameter("operacion");
     if(operacion == null){ // El menu nos envia un parametro para indicar el inicio de una transaccion
-      iniciarRegistro();
+      //iniciarRegistro();
+      out.println(Rythm.render( new File(pathPrefix + "/templates/registro.html")) );
     }else if(operacion.equals("registrar")){
       registrar();
     }
@@ -44,7 +36,7 @@ public class InterfazRegistrar extends HttpServlet {
   public void iniciarRegistro() {
     out.println("<p>Introduzca la Cuenta</p>");
     out.println("<form method=\"GET\" action=\"Registrar\">");
-    out.println("<input type=\"hidden\" name=\"operacion\" value=\"registrar\"/>");
+    out.println("<input type=\"hidden\" <name=\"operacion\" value=\"registrar\"/>");
     out.println("<p> Usuario  <input type=\"text\" name=\"usuario\" size=\"20\"></p>");
     out.println("<p> Contraseña  <input type=\"password\" name=\"contrasenia\" size=\"15\"></p>");
     out.println("<p><input type=\"submit\" value=\"Enviar\"name=\"B1\"></p>");

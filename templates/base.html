@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+@args String title = "ABC Corporate"
+<html>
+
+  <head>
+    <title>EYA - @title</title>
+    <meta http-equiv=Content-Type content="text/html">
+  </head>
+
+  <body>
+    <div id="header">
+      <h1>@title</h1>
+      <p></p>
+      <div id="menu">
+        <h3>Indique la operación que desea realizar:</h3>
+        @render("menu") {
+          <a href="Ingresar">Ingresar</a>
+          <p></p>
+          <a href="Registrar">Registrar</a>
+          <p></p>
+          <a href="menu.html">Cancelar</a>
+          <p></p>
+        }
+      </div>
+    </div>
+  　
+    <div id="sidebar">
+      @// render "sidebar" section
+      @render("sidebar")
+    </div>
+  　
+    <div id="content">
+      @// render main content
+      @render("content")
+    </div>
+  　
+    <div id="footer">
+      @render("footer") {
+          @// here we define default content for footer section
+          @// if sub template failed to supply this section then
+          @// the default content will be output instead
+          <p>Site footer - &copy; Santa Clause</p>
+      }
+    </div>
+  </body>
+
+</html>
