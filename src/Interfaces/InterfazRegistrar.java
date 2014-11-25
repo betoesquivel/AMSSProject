@@ -17,7 +17,7 @@ public class InterfazRegistrar extends HttpServlet {
     thisRequest = request;
 
     thisResponse.setContentType("text/html");
-
+    //Un cambio:
     //Aqui puedo empezar a preparar los templates
     out = thisResponse.getWriter();
     //Preparar el encabezado de la pagina Web de respuesta
@@ -65,6 +65,7 @@ public class InterfazRegistrar extends HttpServlet {
     String contrasenia = thisRequest.getParameter("contrasenia").trim();
     boolean existente = cm.crearCuenta(usuario, contrasenia, "sub");
     if (existente){
+
        out.println("<p>Gracias, ha sido registrado.</p>");
 
        out.println("<form method=\"GET\" action=\"menu.html\">");
