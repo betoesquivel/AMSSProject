@@ -28,7 +28,7 @@ public class InterfazRegistrar extends HttpServlet {
     out.println("</HEAD>");
     out.println("<BODY>");
     out.println("<TITLE>Banco AMSS</TITLE>");
-    out.println(Rythm.render("<h1>hello @who!</h1>", "rythm"));
+    out.println(Rythm.render("template.html", username, contrasenia));
     out.println("<h2>Cajero Electronico</h2>");
     out.println("<h3>Extraer efectivo</h3>");
 
