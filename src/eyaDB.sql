@@ -117,6 +117,18 @@ CREATE TABLE `juez` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
+-- Table structure for juez
+-- ----------------------------
+DROP TABLE IF EXISTS `evaluacionArticulo`;
+CREATE TABLE `evaluacionArticulo` (
+  `idJuez` int(11) NOT NULL,
+  `idArticulo` int(11) NOT NULL,
+  `comentarios` varchar(50) DEFAULT NULL,
+  `evaluacion` int(11) NOT NULL,
+  PRIMARY KEY (`idJuez`, `idArticulo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
 -- Table structure for publicacion
 -- ----------------------------
 DROP TABLE IF EXISTS `publicacion`;
@@ -319,5 +331,17 @@ ON DELETE CASCADE,
 
 ADD CONSTRAINT
 FOREIGN KEY (idArticulo) REFERENCES articulo(id)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+
+ALTER TABLE evaluacionArticulo
+
+ADD CONSTRAINT
+FOREIGN KEY (idArticulo) REFERENCES articulo(id)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+
+ADD CONSTRAINT
+FOREIGN KEY (idJuez) REFERENCES juez(id)
 ON UPDATE CASCADE
 ON DELETE CASCADE;
