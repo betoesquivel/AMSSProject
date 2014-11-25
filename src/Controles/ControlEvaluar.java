@@ -23,8 +23,8 @@ public class ControlMaestro {
 
    public boolean evaluarArticulo(String nom, int calif, String coment) {
      Articulo evaluar =  articulo.getArticulo(nom);
-
-     return evaluar.evaluarArticulo(calif, coment);
+	Juez evaluador =  juez.getJuez(nomJ);
+     return evaluar.evaluarArticulo(evaluar.id, evaluador.id, calif, coment);
 
    }
 	

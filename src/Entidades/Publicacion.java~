@@ -9,7 +9,7 @@ public class Publicacion {
 	public String tema;
 	private transient Conexion conn;
 
-	public Publicacion(int i, int ij, int ic, String ti, String te) {
+	public Publicacion(int i, int ij, int ic) {
 		this.id = i;
 		this.idJefe = ij;
 		this.idCarta = ic;
@@ -39,28 +39,6 @@ public class Publicacion {
 		return true;
 	}
 
-	public ArrayList<Publicacion> getLista() {
-		
-		ArrayList<Publicacion> pub = new ArrayList<Publicacion>();
-		try {
-			conn.stmt.executeQuery ("SELECT * FROM publicacion");
-			ResultSet rs = conn.stmt.getResultSet();
-			while (rs.next()) { //Va al primer registro si lo hay
-				int i = rs.getInt ("id");
-				int ij = rs.getInt("idJefe");
-				int ic = rs.getInt("idCarta");
-				String ti = rs.getString("titulo");
-				String te = rs.getString("tema");
-				rs.close();
-				Publicacion resultado = new Publicacion(i, ij, ic, ti, te);
-				pub.add(resultado);
-			}
-			return pub;			
-		} catch (SQLException e) {System.out.println("Excepcion en validar " + e);}
-		return null;
-
-	} 
-
 
 	public Publicacion getPublicacion(int id){
 		try {
@@ -72,7 +50,7 @@ public class Publicacion {
 				int ic = rs.getInt("idCarta");
 				String t = rs.getString("tema");
 				rs.close();
-				Publicacion resultado = new Publicacion(i, ij, ic, t);
+				Publicacion resultado = new Publicacion(i, ij, ic);
 				return( resultado );
 			}else{ return null;}
 			} catch (SQLException e) {System.out.println("Excepcion en validar " + e);}
