@@ -1,6 +1,7 @@
 package controles;
 import entidades.*;
 import java.io.*;
+import java.util.*;
 
 public class ControlMostrar {
    Cuenta cuenta;
@@ -13,7 +14,7 @@ public class ControlMostrar {
    public transient Conexion conexion;
 
    //Prepara la conexión que comparte con las entidades
-   public ControlMaestro(){
+   public ControlMostrar(){
       conexion = new Conexion();
       cuenta = new Cuenta(conexion);
       cartaEditor = new CartaEditorJefe(conexion);
@@ -36,7 +37,7 @@ public class ControlMostrar {
 
    public String cartaEditor (int id) {
 	Publicacion p = publicacion.getPublicacion(id);
-	CartaEditorJefe cej = cartaEditor.getCartaEditor(p.idCarta);
+	CartaEditorJefe cej = cartaEditor.getCartaEditorJefe(p.idCarta);
 	
 	return cej.contenido;
    }

@@ -28,5 +28,13 @@
         <url-pattern>/Registrar</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+      <servlet-name>ConsultarPub</servlet-name>
+      <servlet-class>interfaces.InterfazConsultarPub</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConsultarPub</servlet-name>
+        <url-pattern>/ConsultarPub</url-pattern>
+    </servlet-mapping>
 
 </web-app>

@@ -1,0 +1,41 @@
+@import entidades.*;
+@import java.util.ArrayList;
+@args String title, String op, String instrucciones, ArrayList<Publicacion> pubs
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>EYA - @title</title>
+    <meta http-equiv=Content-Type content="text/html">
+  </head>
+
+  <body>
+    <div id="header">
+      <h1>@title</h1>
+      </br>
+    </div>
+
+    <div id="content">
+      @if(op.equals("")) {
+        <p>@instrucciones</p>
+        <form action="consultar" method="GET">
+          @for( Publicacion p : pubs ){
+            <p>Algo</p>
+          }
+        </form>
+
+        <form action="menu.html" method="GET">
+          <p> <input type="submit" name="B2" id="B2" value="Cancelar" /></p>
+        </form>
+        }else {
+           <p>En proceso...</p>
+
+           <form method="GET" action="menu.html">
+             <p><input type="submit" value="Regresar a Menu"name="B2"></p>
+           </form>
+        }
+    </div>
+  　
+  </body>
+
+</html>
