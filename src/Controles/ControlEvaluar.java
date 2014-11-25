@@ -2,7 +2,7 @@ package controles;
 import entidades.*;
 import java.io.*;
 
-public class ControlMaestro {
+public class ControlEvaluar {
    Cuenta cuenta;
    Articulo articulo;
    Consejo consejo;
@@ -12,7 +12,7 @@ public class ControlMaestro {
    public transient Conexion conexion;
 
    //Prepara la conexión que comparte con las entidades
-   public ControlMaestro(){
+   public ControlEvaluar(){
       conexion = new Conexion();
       cuenta = new Cuenta(conexion);
       consejo = new Consejo(conexion);
@@ -24,7 +24,8 @@ public class ControlMaestro {
    public boolean evaluarArticulo(String nom, int calif, String coment) {
      Articulo evaluar =  articulo.getArticulo(nom);
 
-     return evaluar.evaluarArticulo(calif, coment);
+     //return evaluar.evaluarArticulo(calif, coment);
+     return true;
 
    }
 	

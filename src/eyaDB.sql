@@ -123,7 +123,7 @@ DROP TABLE IF EXISTS `evaluacionArticulo`;
 CREATE TABLE `evaluacionArticulo` (
   `idJuez` int(11) NOT NULL,
   `idArticulo` int(11) NOT NULL,
-  `comentarios` varchar(50) DEFAULT NULL,
+  `comentarios` longtext,
   `evaluacion` int(11) NOT NULL,
   PRIMARY KEY (`idJuez`, `idArticulo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -39,9 +39,9 @@ public class Articulo {
 		}catch (SQLException e) {System.out.println ("Cannot update Articulo" + e); return false;}
 		return true;
 	}
-	   public Articulo getArticulo(int id){
+	   public Articulo getArticulo(String t){
 		try {
-			conn.stmt.executeQuery ("SELECT id, titulo, contenido, fechaPublicacion, FechaEscritura FROM articulo WHERE id = " + id);
+			conn.stmt.executeQuery ("SELECT id, titulo, contenido, fechaPublicacion, FechaEscritura FROM articulo WHERE titulo = '" + t + "'");
 			ResultSet rs = conn.stmt.getResultSet();
 			if (rs.next()) { //Va al primer registro si lo hay
 				int nArt = rs.getInt ("id");
