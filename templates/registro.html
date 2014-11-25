@@ -14,7 +14,7 @@
     </div>
 
     <div id="content">
-      @if(op == null) {
+      @if(op.equals("")) {
         <p>Introduzca los datos del nuevo usuario.</p>
         <form action="Registrar" method="GET">
           <input type="hidden" name="operacion" id="" value="registrar" />
