@@ -10,7 +10,7 @@ public class InterfazRegistrar extends HttpServlet {
   HttpServletResponse thisResponse;
   HttpServletRequest thisRequest;
   PrintWriter out;
-  String pathPrefix = "/var/lib/tomcat7/webapps/EYA/";
+  String pathPrefix = "/var/lib/tomcat7/webapps/EYA/templates/";
   ControlMaestro cm;
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
@@ -18,57 +18,44 @@ public class InterfazRegistrar extends HttpServlet {
     thisRequest = request;
 
     thisResponse.setContentType("text/html");
-    //Un cambio:
-    //Aqui puedo empezar a preparar los templates
-    out = thisResponse.getWriter();
-    //Preparar el encabezado de la pagina Web de respuesta
 
+    // variable que regresa para imprimir el html
+    out = thisResponse.getWriter();
+
+    //Preparar variable con parametros para el template
+    // Se agregararn valores con params.put("nombreVar", "valor");
+    // Se actualizan variables con params.put("nombreVar", "nuevoValor");
+    Map<String, Object> params = new HashMap<String, Object>();
     String operacion = request.getParameter("operacion");
+
     if(operacion == null){ // El menu nos envia un parametro para indicar el inicio de una transaccion
-      //iniciarRegistro();
-      out.println(Rythm.render( new File(pathPrefix + "/templates/registro.html")) );
+      iniciarRegistro();
     }else if(operacion.equals("registrar")){
       registrar();
     }
-
   }
 
   public void iniciarRegistro() {
-    out.println("<p>Introduzca la Cuenta</p>");
-    out.println("<form method=\"GET\" action=\"Registrar\">");
-    out.println("<input type=\"hidden\" <name=\"operacion\" value=\"registrar\"/>");
-    out.println("<p> Usuario  <input type=\"text\" name=\"usuario\" size=\"20\"></p>");
-    out.println("<p> Contraseña  <input type=\"password\" name=\"contrasenia\" size=\"15\"></p>");
-    out.println("<p><input type=\"submit\" value=\"Enviar\"name=\"B1\"></p>");
-    out.println("</form>");
-
-    out.println("<form method=\"GET\" action=\"menu.html\">");
-    out.println("<p><input type=\"submit\" value=\"Cancelar\"name=\"B2\"></p>");
-    out.println("</form>");
-
-    out.println("</BODY>");
-    out.println("</HTML>");
+    String title = "Registrar nueva Cuenta";
+    String op = null;
+    out.println(Rythm.render( new File(pathPrefix + "registro.html"), title, op) );
   }
 
   public void registrar(){
-    cm = new ControlMaestro();
-    //La funcion trim() elimina espacios antes y despues del valor
-    String usuario = thisRequest.getParameter("usuario").trim();
-    String contrasenia = thisRequest.getParameter("contrasenia").trim();
-    boolean existente = cm.crearCuenta(usuario, contrasenia, "sub");
-    if (existente){
+      String title = "Registro con Exito";
+      String op = "registrar";
 
-       out.println("<p>Gracias, ha sido registrado.</p>");
-
-       out.println("<form method=\"GET\" action=\"menu.html\">");
-       out.println("<p><input type=\"submit\" value=\"Cancelar\"name=\"B2\"></p>");
-       out.println("</form>");
-
-       out.println("</BODY>");
-       out.println("</HTML>");
-    } else {
-       iniciarRegistro();
-    }
+      // Creo instancia del control 
+      cm = new ControlMaestro();
+      //La funcion trim() elimina espacios antes y despues del valor
+      String usuario = thisRequest.getParameter("usuario").trim();
+      String contrasenia = thisRequest.getParameter("contrasenia").trim();
+      boolean existente = cm.crearCuenta(usuario, contrasenia, "sub");
+      if (!existente){
+        iniciarRegistro();
+      }
+      out.println(Rythm.render( new File(pathPrefix + "registro.html"), title, op, usuario) );
   }
+
 }
 
