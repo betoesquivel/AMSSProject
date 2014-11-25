@@ -52,7 +52,7 @@ public class InterfazConsultarPub extends HttpServlet {
     String instrucciones = "Haz click en la publicacion que deseas ver: ";
 
     cm = new ControlMostrar();
-    ArrayList<Publicacion> pubs = getListaPublicaciones();
+    ArrayList<Publicacion> pubs = cm.getListaPublicaciones();
 
     out.println(Rythm.render( new File(pathPrefix + "consultarPublicaciones.html"), title, op, instrucciones, pubs));
   }
@@ -62,15 +62,7 @@ public class InterfazConsultarPub extends HttpServlet {
       String op = "registrar";
 
       // Creo instancia del control 
-      cm = new ControlMaestro();
-      //La funcion trim() elimina espacios antes y despues del valor
-      String usuario = thisRequest.getParameter("usuario").trim();
-      String contrasenia = thisRequest.getParameter("contrasenia").trim();
-      boolean existente = cm.crearCuenta(usuario, contrasenia, "sub");
-      if (!existente){
-        iniciarRegistro();
-      }
-      out.println(Rythm.render( new File(pathPrefix + "registro.html"), title, op, usuario) );
+      //out.println(Rythm.render( new File(pathPrefix + "registro.html"), title, op, usuario) );
   }
 
 }

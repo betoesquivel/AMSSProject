@@ -1,6 +1,7 @@
 package entidades;
 import java.sql.*;
 import java.io.*;
+import java.util.ArrayList;
 
 public class Publicacion {
 	public int id;
@@ -64,15 +65,16 @@ public class Publicacion {
 
 	public Publicacion getPublicacion(int id){
 		try {
-			conn.stmt.executeQuery ("SELECT id, idJefe, idCarta FROM publicacion WHERE id = " + id);
+			conn.stmt.executeQuery ("SELECT id, idJefe, idCarta, titulo, tema FROM publicacion WHERE id = " + id);
 			ResultSet rs = conn.stmt.getResultSet();
 			if (rs.next()) { //Va al primer registro si lo hay
 				int i = rs.getInt ("id");
 				int ij = rs.getInt("idJefe");
 				int ic = rs.getInt("idCarta");
 				String t = rs.getString("tema");
+        String tit = rs.getString("titulo");
 				rs.close();
-				Publicacion resultado = new Publicacion(i, ij, ic, t);
+				Publicacion resultado = new Publicacion(i, ij, ic, tit, t);
 				return( resultado );
 			}else{ return null;}
 			} catch (SQLException e) {System.out.println("Excepcion en validar " + e);}

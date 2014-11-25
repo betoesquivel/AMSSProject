@@ -21,7 +21,7 @@ public class ControlEvaluar {
       articulo = new Articulo(conexion);
    }
 
-   public boolean evaluarArticulo(String nom, int calif, String coment) {
+   public boolean evaluarArticulo(String nom, String nomJ, int calif, String coment) {
      Articulo evaluar =  articulo.getArticulo(nom);
 
       Juez evaluador =  juez.getJuez(nomJ);

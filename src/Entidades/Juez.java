@@ -1,6 +1,7 @@
 package entidades;
 import java.sql.*;
 import java.io.*;
+import java.util.*;
 
 public class Juez {
    public int id, idConsejo;
@@ -19,7 +20,7 @@ public class Juez {
 
    public Juez getJuez(String nom) {
        try {
-           conn.stmt.executeQuery ("SELECT * FROM juez WHERE nombre = '" + nom "'");
+           conn.stmt.executeQuery ("SELECT * FROM juez WHERE nombre = '" + nom + "'");
            ResultSet rs = conn.stmt.getResultSet();
            if (rs.next()) { //Va al primer registro si lo hay
                this.id = rs.getInt ("id");
