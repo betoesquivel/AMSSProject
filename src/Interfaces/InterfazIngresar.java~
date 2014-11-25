@@ -68,13 +68,12 @@ public class InterfazIngresar extends HttpServlet {
     if (existente){
         HttpSession session = thisRequest.getSession();
         session.setAttribute("user", usuario);
-	//session.setAttribute("user", usuario);
 
         String u = (String) session.getAttribute("user");
-       out.println("<p>Bienvenido " + u + ", ha sido loggeado.</p>");
+       out.println("<p>Gracias " + u + ", ha sido loggeado.</p>");
 
-       out.println("<form method=\"GET\" action=\"menuSubscriptor.html\">");
-       out.println("<p><input type=\"submit\" value=\"Continuar\"name=\"B2\"></p>");
+       out.println("<form method=\"GET\" action=\"menu.html\">");
+       out.println("<p><input type=\"submit\" value=\"Cancelar\"name=\"B2\"></p>");
        out.println("</form>");
 
        out.println("</BODY>");
