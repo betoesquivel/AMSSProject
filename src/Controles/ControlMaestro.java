@@ -50,6 +50,8 @@ public class ControlMaestro {
    public boolean iniciarSesion(String usr, String contr, String tipo) {
        Cuenta verificar;
        verificar = cuenta.getCuenta(usr);
-       return (verificar.usuario == usr && verificar.contrasenia == contr);
+       //if (verificar.usuario.trim() == usr || verificar.contrasenia.trim() == contr) return false;
+       //return true;
+       return (verificar.usuario.equals(usr) && verificar.contrasenia.equals(contr));
    }
 }

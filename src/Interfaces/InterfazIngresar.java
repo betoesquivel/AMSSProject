@@ -1,5 +1,6 @@
 package interfaces;
 import controles.*;
+import entidades.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
@@ -63,12 +64,13 @@ public class InterfazIngresar extends HttpServlet {
     String usuario = thisRequest.getParameter("usuario").trim();
     String contrasenia = thisRequest.getParameter("contrasenia").trim();
     boolean existente = cm.iniciarSesion(usuario, contrasenia, "sub");
+//    Cuenta obtenida = cm.iniciarSesion(usuario, contrasenia, "sub");
     if (existente){
         HttpSession session = thisRequest.getSession();
         session.setAttribute("user", usuario);
 
         String u = (String) session.getAttribute("user");
-       out.println("<p>Gracias " + u + ", ha sido registrado.</p>");
+       out.println("<p>Gracias " + u + ", ha sido loggeado.</p>");
 
        out.println("<form method=\"GET\" action=\"menu.html\">");
        out.println("<p><input type=\"submit\" value=\"Cancelar\"name=\"B2\"></p>");
@@ -77,7 +79,7 @@ public class InterfazIngresar extends HttpServlet {
        out.println("</BODY>");
        out.println("</HTML>");
     } else {
-       iniciar();
+       iniciarIngresar();
     }
   }
 }

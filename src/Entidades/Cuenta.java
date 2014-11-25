@@ -61,7 +61,14 @@ public class Cuenta {
 
 	public Cuenta getCuenta(String u){
 		try {
-			conn.stmt.executeQuery ("SELECT id, usuario, contrasenia FROM cuenta WHERE id = " + u);
+      if ( conn.stmt == null ) return null;
+//      if (conn.stmt == null) {
+//        return null;
+//      } else {
+//        Cuenta resultado = new Cuenta("hugo", "hugo", "sub");
+//        return resultado;
+//      }
+			conn.stmt.executeQuery ("SELECT id, usuario, contrasenia, tipo FROM cuenta WHERE usuario = '" + u + "'");
 			ResultSet rs = conn.stmt.getResultSet();
 			if (rs.next()) { //Va al primer registro si lo hay
 				int nCuenta = rs.getInt ("id");
@@ -70,9 +77,12 @@ public class Cuenta {
         String tipo = rs.getString("tipo");
 				rs.close();
 				Cuenta resultado = new Cuenta(nCuenta, usr, contra, tipo);
-				return( resultado );
-			}else{ return null;}
-			} catch (SQLException e) {System.out.println("Excepcion en validar " + e);}
+				return resultado;
+			}else{
+				//Cuenta resultado = new Cuenta("hugo", "hugo", "sub");
+				return null;
+      }
+    } catch (SQLException e) {System.out.println("Excepcion en validar " + e);}
 		return null;
 	}
 
