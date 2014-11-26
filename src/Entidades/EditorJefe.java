@@ -42,7 +42,7 @@ public class EditorJefe {
 	   }
    }
 
-   public boolean agregarEditorJefe(String usr) {
+   public boolean agregar(String usr) {
 	   try{
 		   conn.stmt.executeUpdate ("INSERT INTO editorJefe (idConsejo,nombre) VALUES ('" + usr + "')");
 		   return true;
