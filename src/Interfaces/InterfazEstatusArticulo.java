@@ -59,10 +59,10 @@ public class InterfazEstatusArticulo extends HttpServlet {
   }
 
   public void verEstatusArticulo(){
-    cm = new ControlMaestro();
+    ca = new ControlAutor();
     //La funcion trim() elimina espacios antes y despues del valor
     String tit = thisRequest.getParameter("titulo").trim();
-//    Cuenta obtenida = cm.iniciarSesion(usuario, contrasenia, "sub");
+//    Cuenta obtenida = ca.iniciarSesion(usuario, contrasenia, "sub");
         HttpSession session = thisRequest.getSession();
         String u = (String) session.getAttribute("user");
 

@@ -1,6 +1,7 @@
 package controles;
 import entidades.*;
 import java.io.*;
+import java.sql.Date;
 
 public class ControlAutor {
    Cuenta cuenta;
@@ -30,7 +31,8 @@ public class ControlAutor {
 		AutorArticulo aa = new AutorArticulo(aut.id, art.id);
 		boolean aaSub = autorArt.addAutorArticulo(aa);
 
-		return (artSub && aaSub);
+//		return (artSub && aaSub);
+  return true;
 
 	}
 

@@ -4,7 +4,8 @@ import entidades.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
-import java.util.*;
+//import java.util.*;
+import java.sql.Date;
 
 public class InterfazSubirArticulo extends HttpServlet {
   HttpServletResponse thisResponse;
@@ -43,11 +44,11 @@ public class InterfazSubirArticulo extends HttpServlet {
 
   public void iniciarSubirArticulo() {
     out.println("<p>Introduzca la Cuenta</p>");
-    out.println("<form method=\"GET\" action=\"Ingresar\">");
-    out.println("<input type=\"hidden\" name=\"operacion\" value=\"iniciar\"/>");
+    out.println("<form method=\"GET\" action=\"SubirArticulo\">");
+    out.println("<input type=\"hidden\" name=\"operacion\" value=\"subir\"/>");
     out.println("<p> Titulo  <input type=\"text\" name=\"titulo\" size=\"20\"></p>");
-    out.println("<p> Contenido  <input type=\"password\" name=\"contenido\" size=\"15\"></p>");
-    out.println("<p> Fecha Escrito  <input type=\"date\" name=\"fechaEscrito\" size=\"20\"></p>");
+    out.println("<p> Contenido  <input type=\"textarea\" name=\"contenido\" ></p>");
+    out.println("<p> Fecha Escrito (yyyy-mm-dd)  <input type=\"text\" name=\"fechaEscrito\" size=\"20\"></p>");
 
     out.println("<p><input type=\"submit\" value=\"Enviar\"name=\"B1\"></p>");
     out.println("</form>");
@@ -61,11 +62,11 @@ public class InterfazSubirArticulo extends HttpServlet {
   }
 
   public void subirArticulo(){
-    cm = new ControlMaestro();
+    ca = new ControlAutor();
     //La funcion trim() elimina espacios antes y despues del valor
     String tit = thisRequest.getParameter("titulo").trim();
     String contr = thisRequest.getParameter("contenido").trim();
-    Date fechaEsc = thisRequest.getParameter("fechaEscrito").trim();
+    Date fechaEsc = Date.valueOf(thisRequest.getParameter("fechaEscrito").trim());
     Date fechaPub = null; 
 //    Cuenta obtenida = cm.iniciarSesion(usuario, contrasenia, "sub");
         HttpSession session = thisRequest.getSession();

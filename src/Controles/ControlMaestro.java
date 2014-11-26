@@ -44,14 +44,24 @@ public class ControlMaestro {
 
    public boolean crearCuenta(String usr, String contrasenia, String tipo){
      Cuenta nueva = new Cuenta(usr, contrasenia, tipo);
-     return cuenta.agregar(nueva);
+     boolean otra = false;
+     if (tipo.equals("aut")){
+       otra = autor.agregar(usr,null);
+     }else if (tipo.equals("sub")) {
+       otra = subscriptor.agregar(usr,null);
+     }else if (tipo.equals("jue")) {
+       otra = juez.agregarJuez(usr);
+     }else if (tipo.equals("edi")) {
+       otra = editorJefe.agregar(usr);
+     }
+     return cuenta.agregar(nueva) && otra;
    }
 
-   public boolean iniciarSesion(String usr, String contr, String tipo) {
+    //Regresa el tipo de la cuenta, si se tuvo exito, o null si no
+   public String iniciarSesion(String usr, String contr) {
        Cuenta verificar;
        verificar = cuenta.getCuenta(usr);
-       //if (verificar.usuario.trim() == usr || verificar.contrasenia.trim() == contr) return false;
-       //return true;
-       return (verificar.usuario.equals(usr) && verificar.contrasenia.equals(contr));
+       if (verificar == null) return "";
+       return verificar.tipo;
    }
 }

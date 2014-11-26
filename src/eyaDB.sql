@@ -79,7 +79,6 @@ DROP TABLE IF EXISTS `editorJefe`;
 CREATE TABLE `editorJefe` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT NULL,
-  `idConsejo` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -112,7 +111,6 @@ DROP TABLE IF EXISTS `juez`;
 CREATE TABLE `juez` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT NULL,
-  `idConsejo` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
