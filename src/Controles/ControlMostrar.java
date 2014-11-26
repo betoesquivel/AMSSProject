@@ -23,13 +23,6 @@ public class ControlMostrar {
       articulo = new Articulo(conexion);
    }
 
-   public ArrayList<Publicacion> getListaPublicaciones() { 
-	ArrayList<Publicacion>  p = publicacion.getLista();
-	
-	return p;
-	
-   }
-
    public String obtenerTemaPublic (int id){
      Publicacion p = publicacion.getPublicacion(id);
      return p.tema;

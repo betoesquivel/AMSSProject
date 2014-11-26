@@ -46,7 +46,6 @@ CREATE TABLE `autor` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT NULL,
   `fechaUltimaPublicacion` date DEFAULT NULL,
-  `tipoAutor` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -56,20 +55,10 @@ CREATE TABLE `autor` (
 DROP TABLE IF EXISTS `cartaEditorJefe`;
 CREATE TABLE `cartaEditorJefe` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(50) UNIQUE NOT NULL,
+  `titulo` varchar(50),
   `contenido` longtext,
   `idEditor` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for consejo
--- ----------------------------
-DROP TABLE IF EXISTS `consejo`;
-CREATE TABLE `consejo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `fechaInicio` date NOT NULL,
-  `fechaFin` date DEFAULT NULL,
+  `fechaPub` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -84,28 +73,6 @@ CREATE TABLE `editorJefe` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Table structure for guru
--- ----------------------------
-DROP TABLE IF EXISTS `guru`;
-CREATE TABLE `guru` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) DEFAULT NULL,
-  `direccion` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for guruPub
--- ----------------------------
-DROP TABLE IF EXISTS `guruPub`;
-CREATE TABLE `guruPub` (
-  `idGuru` int(11) NOT NULL,
-  `idPub` int(11) NOT NULL,
-  `fechaEnvio` date DEFAULT NULL,
-  PRIMARY KEY (`idGuru`,`idPub`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
 -- Table structure for juez
 -- ----------------------------
 DROP TABLE IF EXISTS `juez`;
@@ -116,7 +83,7 @@ CREATE TABLE `juez` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Table structure for juez
+-- Table structure for evaluacionArticulo
 -- ----------------------------
 DROP TABLE IF EXISTS `evaluacionArticulo`;
 CREATE TABLE `evaluacionArticulo` (
@@ -133,36 +100,10 @@ CREATE TABLE `evaluacionArticulo` (
 DROP TABLE IF EXISTS `publicacion`;
 CREATE TABLE `publicacion` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idJefe` int(11) NOT NULL,
-  `idCarta` int(11) NOT NULL,
   `fechaPub` date NOT NULL,
   `titulo` varchar(50) NOT NULL,
   `tema` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for puestoRevista
--- ----------------------------
-DROP TABLE IF EXISTS `puestoRevistas`;
-CREATE TABLE `puestoRevistas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `direccion` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for puestoRevistasPub
--- ----------------------------
-DROP TABLE IF EXISTS `puestoRevistasPub`;
-CREATE TABLE `puestoRevistasPub` (
-  `idPuesto` int(11) NOT NULL,
-  `idPub` int(11) NOT NULL,
-  `fechaEnvio` date DEFAULT NULL,
-  `cantidadEnviada` int(11) DEFAULT NULL,
-  `fechaRegreso` date DEFAULT NULL,
-  `cantidadRegresada` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idPuesto`,`idPub`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
@@ -190,31 +131,6 @@ CREATE TABLE `subscriptor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Table structure for subscriptorPub
--- ----------------------------
-DROP TABLE IF EXISTS `subscriptorPub`;
-CREATE TABLE `subscriptorPub` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idSub` int(11) NOT NULL,
-  `idPub` int(11) NOT NULL,
-  `fechaEnvio` date NOT NULL,
-  `costoAdicional` double DEFAULT NULL,
-  PRIMARY KEY (`id`,`idSub`,`idPub`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for temaSugerido
--- ----------------------------
-DROP TABLE IF EXISTS `temaSugerido`;
-CREATE TABLE `temaSugerido` (
-  `idJuez` int(11) NOT NULL,
-  `idPub` int(11) NOT NULL,
-  `tema` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`idJuez`,`idPub`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
--- ----------------------------
 -- Table structure for autorArticulo
 -- ----------------------------
 DROP TABLE IF EXISTS `autorArticulo`;
@@ -232,36 +148,6 @@ FOREIGN KEY (idEditor) REFERENCES editorJefe(id)
 ON UPDATE CASCADE
 ON DELETE CASCADE;
 
-
-ALTER TABLE editorJefe
-
-ADD CONSTRAINT
-FOREIGN KEY (idConsejo) REFERENCES consejo(id)
-ON UPDATE CASCADE
-ON DELETE CASCADE;
-
-
-ALTER TABLE guruPub
-
-ADD CONSTRAINT
-FOREIGN KEY (idGuru) REFERENCES guru(id)
-ON UPDATE CASCADE
-ON DELETE CASCADE,
-
-ADD CONSTRAINT
-FOREIGN KEY (idPub) REFERENCES publicacion(id)
-ON UPDATE CASCADE
-ON DELETE CASCADE;
-
-
-ALTER TABLE juez
-
-ADD CONSTRAINT
-FOREIGN KEY (idConsejo) REFERENCES consejo(id)
-ON UPDATE CASCADE
-ON DELETE CASCADE;
-
-
 ALTER TABLE publicacion
 
 ADD CONSTRAINT
@@ -275,49 +161,10 @@ ON UPDATE CASCADE
 ON DELETE CASCADE;
 
 
-ALTER TABLE puestoRevistasPub
-
-ADD CONSTRAINT
-FOREIGN KEY (idPuesto) REFERENCES puestoRevistas(id)
-ON UPDATE CASCADE
-ON DELETE CASCADE,
-
-ADD CONSTRAINT
-FOREIGN KEY (idPub) REFERENCES publicacion(id)
-ON UPDATE CASCADE
-ON DELETE CASCADE;
-
-
 ALTER TABLE subscripcion
 
 ADD CONSTRAINT
 FOREIGN KEY (idSubscriptor) REFERENCES subscriptor(id)
-ON UPDATE CASCADE
-ON DELETE CASCADE;
-
-
-ALTER TABLE subscriptorPub
-
-ADD CONSTRAINT
-FOREIGN KEY (idSub) REFERENCES subscriptor(id)
-ON UPDATE CASCADE
-ON DELETE CASCADE,
-
-ADD CONSTRAINT
-FOREIGN KEY (idPub) REFERENCES publicacion(id)
-ON UPDATE CASCADE
-ON DELETE CASCADE;
-
-
-ALTER TABLE temaSugerido
-
-ADD CONSTRAINT
-FOREIGN KEY (idPub) REFERENCES publicacion(id)
-ON UPDATE CASCADE
-ON DELETE CASCADE,
-
-ADD CONSTRAINT
-FOREIGN KEY (idJuez) REFERENCES juez(id)
 ON UPDATE CASCADE
 ON DELETE CASCADE;
 

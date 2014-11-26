@@ -30,9 +30,8 @@ public class Subscriptor {
 		t = a.tipo;
 
 		try {
-			String s = "UPDATE subscriptor SET id = " + i + ", nombre = " + n + ", tipo = " + t +  " WHERE id = " + i;
+			String s = "UPDATE subscriptor SET id = " + i + ", nombre = '" + n + "', tipo = '" + t +  "' WHERE id = " + i;
 			conn.stmt.executeUpdate(s);
-
 		}catch (SQLException e) {System.out.println ("Cannot update Subscriptor" + e); return false;}
 
 		return true;
@@ -41,7 +40,7 @@ public class Subscriptor {
 
 	public Subscriptor getSubscriptor(String u){
 		try {
-			conn.stmt.executeQuery ("SELECT id, nombre, tipo FROM subscriptor WHERE nombre = '" + u + "'");
+			conn.stmt.executeQuery ("SELECT * FROM subscriptor WHERE nombre = '" + u + "'");
 			ResultSet rs = conn.stmt.getResultSet();
 			if (rs.next()) { //Va al primer registro si lo hay
 				int i = rs.getInt ("id");
@@ -57,8 +56,14 @@ public class Subscriptor {
 
 	public boolean agregar(String n, String t){
 		try {
-			 String s = "INSERT INTO subscriptor (nombre, tipo)" +
-				   " VALUES ('" + n + "', " + t + " )";
+      String s = "";
+      if (!t.equals("")){
+        s = "INSERT INTO subscriptor (nombre, tipo)" +
+          " VALUES ('" + n + "', '" + t + "' )";
+      }else{
+        s = "INSERT INTO subscriptor (nombre, tipo)" +
+          " VALUES ('" + n + "', " + t + " )";
+      }
 			 System.out.println(s);
 			 conn.stmt.executeUpdate(s);
 

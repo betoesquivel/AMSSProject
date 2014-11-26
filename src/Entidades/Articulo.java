@@ -7,16 +7,16 @@ public class Articulo {
 	public int id;
 	public String titulo;
 	public String contenido;
-	public Date fechaP;
 	public Date fechaE;
+	public Date fechaP;
 	private transient Conexion conn;
 
 	public Articulo(int i, String t, String c, Date e, Date p) {
 		this.id = i;
 		this.titulo = t;
 		this.contenido = c;
-		this.fechaP = p;
 		this.fechaE = e;
+		this.fechaP = p;
 	}
 
 	public Articulo(Conexion c){
@@ -29,11 +29,11 @@ public class Articulo {
 		int i = a.id;
 		String t = a.titulo;
 		String c = a.contenido;
-		Date fP = a.fechaP;
 		Date fE = a.fechaE;
+		Date fP = a.fechaP;
 
 		try {
-			String s = "UPDATE articulo SET id = " + i + ", titulo = " + t + ", contenido = " + c + ", fechaPublicacion = " + fP + ", fechaEscritura = " + fE +" WHERE id = " + i;
+			String s = "UPDATE articulo SET id = " + i + ", titulo = " + t + ", contenido = " + c + ", fechaEscritura = " + fE + ", fechaPub = " + fP +" WHERE id = " + i;
 			conn.stmt.executeUpdate(s);
 
 		}catch (SQLException e) {System.out.println ("Cannot update Articulo" + e); return false;}

@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class Juez {
-   public int id, idConsejo;
+   public int id;
    public String nombre;
    private transient Conexion conn;
 
@@ -35,7 +35,7 @@ public class Juez {
 
    public boolean setJuez(Juez j) {
 	   try{
-		   conn.stmt.executeUpdate ("UPDATE juez SET idConsejo = " + j.idConsejo + ", nombre = " + j.nombre + " WHERE id = " + j.id);
+		   conn.stmt.executeUpdate ("UPDATE juez SET nombre = " + j.nombre + " WHERE id = " + j.id);
 		   return true;
 	   } catch(SQLException e) {
 		   return false;
@@ -44,7 +44,7 @@ public class Juez {
 
    public boolean agregar(String usr) {
 	   try{
-		   conn.stmt.executeUpdate ("INSERT INTO juez (idConsejo,nombre) VALUES ('" + usr + "')");
+		   conn.stmt.executeUpdate ("INSERT INTO juez (nombre) VALUES ('" + usr + "')");
 		   return true;
 	   } catch(SQLException e) {
 		   return false;
