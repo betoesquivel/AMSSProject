@@ -21,11 +21,11 @@ public class ControlEvaluar {
       articulo = new Articulo(conexion);
    }
 
-   public boolean evaluarArticulo(String nom, String nomJ, int calif, String coment) {
-     Articulo evaluar =  articulo.getArticulo(nom);
+   public boolean evaluarArticulo(String titulo, String nomJ, int calif, String coment) {
+     Articulo evaluar =  articulo.getArticulo(titulo);
 
       Juez evaluador =  juez.getJuez(nomJ);
-     return evaluar.evaluarArticulo(evaluar.id, evaluador.id, calif, coment);
+     return evaluar.evaluarArticulo(evaluador.id, evaluar.id, coment, calif);
 
    }
 	

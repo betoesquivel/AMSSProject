@@ -12,8 +12,9 @@ public class Juez {
       this.conn = c;
    }
 
-   public Juez(int id, String nombre) {
+   public Juez(int id, int idConsejo, String nombre) {
 	   this.id = id;
+	   this.idConsejo = idConsejo;
 	   this.nombre = nombre;
    }
 
@@ -42,7 +43,7 @@ public class Juez {
 	   }
    }
 
-   public boolean agregar(String usr) {
+   public boolean agregarJuez(String usr) {
 	   try{
 		   conn.stmt.executeUpdate ("INSERT INTO juez (idConsejo,nombre) VALUES ('" + usr + "')");
 		   return true;
