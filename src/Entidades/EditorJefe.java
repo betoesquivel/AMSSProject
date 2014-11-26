@@ -16,9 +16,9 @@ public class EditorJefe {
 	   this.nombre = nombre;
    }
 
-   public EditorJefe getEditorJefe(int id) {
+   public EditorJefe getEditorJefe(String u) {
        try {
-           conn.stmt.executeQuery ("SELECT * FROM editorJefe WHERE id = " + id);
+           conn.stmt.executeQuery ("SELECT * FROM editorJefe WHERE nombre = '" + u+ "'");
            ResultSet rs = conn.stmt.getResultSet();
            if (rs.next()) { //Va al primer registro si lo hay
                this.id = rs.getInt ("id");

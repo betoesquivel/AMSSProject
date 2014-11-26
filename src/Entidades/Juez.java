@@ -24,7 +24,7 @@ public class Juez {
            if (rs.next()) { //Va al primer registro si lo hay
                int i = rs.getInt ("id");
                String n = rs.getString ("nombre");
-		Juez j = new Juez(i,n);
+               Juez j = new Juez(i,n);
                return j;
            }else{ return null;}
        } catch (SQLException e) {

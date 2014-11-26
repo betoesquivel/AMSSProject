@@ -89,4 +89,13 @@ public class CartaEditorJefe {
 
 	}
 
+   public boolean agregar(String titulo, String contenido, int idEditorJefe){
+      try {
+    	  conn.stmt.executeUpdate ("INSERT INTO cartaEditorJefe(titulo, idEditor, contenido) VALUES('"+titulo+"','"+idEditorJefe+"','"+contenido+"')");
+      } catch (SQLException e) {System.out.println ("Cannot getCartaEditorJefe()" + e);
+      return false;
+      }
+      return true;
+   }
+
 }
