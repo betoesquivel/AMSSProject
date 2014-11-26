@@ -114,5 +114,16 @@ public class Articulo {
 
 	}
 
+	public boolean pubArticulo(String t, Date f) {
+		
+		try {
+			String s = "UPDATE articulo SET fechaPublicacion = '" + f + "' WHERE titulo = '" + t + "'";
+			conn.stmt.executeUpdate(s);
+
+		}catch (SQLException e) {System.out.println ("Cannot update Articulo" + e); return false;}
+		return true;
+
+	}
+
 
 }
