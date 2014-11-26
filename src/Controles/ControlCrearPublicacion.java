@@ -11,7 +11,7 @@ public class ControlCrearPublicacion {
    public transient Conexion conexion;
 
    //Prepara la conexión que comparte con las entidades
-   public ControlAutor(){
+   public ControlCrearPublicacion(){
       conexion = new Conexion();
       articulo = new Articulo(conexion);
       cuenta = new Cuenta(conexion);

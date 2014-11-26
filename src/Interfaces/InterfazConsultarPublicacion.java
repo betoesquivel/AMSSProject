@@ -49,11 +49,12 @@ public class InterfazConsultarPublicacion extends HttpServlet {
 
     out.println("<p><input type=\"submit\" value=\"Ver Publicacion\"name=\"B1\"></p>");
     out.println("</form>");
+        HttpSession session = thisRequest.getSession();
 	String t = (String) session.getAttribute("tipo");
 	
-	if(t.equals("sub") {
+	if(t.equals("sub")) {
     out.println("<form method=\"GET\" action=\"menuSubscriptor.html\">");
-	} else if ("edi") {
+	} else if (t.equals("edi")) {
     out.println("<form method=\"GET\" action=\"menuEditorJefe.html\">");
 	}
     out.println("<p><input type=\"submit\" value=\"Cancelar\"name=\"B2\"></p>");
@@ -79,9 +80,9 @@ public class InterfazConsultarPublicacion extends HttpServlet {
 	       out.println("<p> A continuacion el contenido de la publicacion .</p>");
 	       out.println("<p>" + cont + ".</p>");
 	
-		if(t.equals("sub") {
+		if(t.equals("sub")) {
 	    out.println("<form method=\"GET\" action=\"menuSubscriptor.html\">");
-		} else if ("edi") {
+		} else if (t.equals("edi")) {
 	    out.println("<form method=\"GET\" action=\"menuEditorJefe.html\">");
 		}
 	       out.println("<p><input type=\"submit\" value=\"Regresar Menu\"name=\"B2\"></p>");
@@ -92,9 +93,9 @@ public class InterfazConsultarPublicacion extends HttpServlet {
 	} else {
 	       out.println("<p>Lo sentimos " + u + ", no se encontro la publicacion que solicitaste ver.</p>");
 	
-		if(t.equals("sub") {
+		if(t.equals("sub")) {
 	    out.println("<form method=\"GET\" action=\"menuSubscriptor.html\">");
-		} else if ("edi") {
+		} else if (t.equals("edi")) {
 	    out.println("<form method=\"GET\" action=\"menuEditorJefe.html\">");
 		}
 	       out.println("<p><input type=\"submit\" value=\"Regresar Menu\"name=\"B2\"></p>");

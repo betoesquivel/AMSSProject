@@ -93,10 +93,10 @@ public class Articulo {
 	public String getListaArtPublicacion (Date fecha) {
 
 		try {
-			String s = "SELECT contenido FROM articulo WHERE fechaPub = '" + fecha "')";
+			String s = "SELECT contenido FROM articulo WHERE fechaPub = '" + fecha +"')";
 			System.out.println(s);
 			conn.stmt.executeUpdate(s);
-			String resultado = ""
+			String resultado = "";
 			ResultSet rs = conn.stmt.getResultSet();
 			if (rs.next()) {			
 				while (rs.next()) { //Va al primer registro si lo hay
@@ -105,11 +105,10 @@ public class Articulo {
 				
 				}
 				return( resultado );
-			} else{ return null;}
+			} else{ return "";}
 		} catch (SQLException e) { System.out.println ("Cannot insert evaluacion" + e); 
-			return false; 
+			return "";
 		}
-			return true;	
 
 
 	}
