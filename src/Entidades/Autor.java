@@ -53,10 +53,10 @@ public class Autor {
                 return null;
         }
  
-        public boolean agregar(int id, String nom, Date fechaUltPub){
+        public boolean agregar(String nom, Date fechaUltPub){
                 try {
-                         String s = "INSERT INTO autor (id, nombre, fechaUltimaPublicacion)" +
-                                   " VALUES ("+ id + " , '" + nom + "', " + fechaUltPub + " )";
+                         String s = "INSERT INTO autor (nombre, fechaUltimaPublicacion)" +
+                                   " VALUES ('" + nom + "', " + fechaUltPub + " )";
                          System.out.println(s);
                          conn.stmt.executeUpdate(s);
  
