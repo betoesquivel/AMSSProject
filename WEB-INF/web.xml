@@ -29,12 +29,12 @@
     </servlet-mapping>
 
     <servlet>
-      <servlet-name>ConsultarPub</servlet-name>
-      <servlet-class>interfaces.InterfazConsultarPub</servlet-class>
+      <servlet-name>ConsultarPublicacion</servlet-name>
+      <servlet-class>interfaces.InterfazConsultarPublicacion</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ConsultarPub</servlet-name>
-        <url-pattern>/ConsultarPub</url-pattern>
+        <servlet-name>ConsultarPublicacion</servlet-name>
+        <url-pattern>/ConsultarPublicacion</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -53,6 +53,43 @@
     <servlet-mapping>
         <servlet-name>SubirArticulo</servlet-name>
         <url-pattern>/SubirArticulo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+      <servlet-name>ConsultarArticulo</servlet-name>
+      <servlet-class>interfaces.InterfazConsultarArticulo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConsultarArticulo</servlet-name>
+        <url-pattern>/ConsultarArticulo</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+      <servlet-name>EvaluarArticulo</servlet-name>
+      <servlet-class>interfaces.InterfazEvaluarArticulo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EvaluarArticulo</servlet-name>
+        <url-pattern>/EvaluarArticulo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+      <servlet-name>SubirCarta</servlet-name>
+      <servlet-class>interfaces.InterfazSubirCarta</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubirCarta</servlet-name>
+        <url-pattern>/SubirCarta</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+      <servlet-name>CrearPublicacion</servlet-name>
+      <servlet-class>interfaces.InterfazCrearPublicacion</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CrearPublicacion</servlet-name>
+        <url-pattern>/CrearPublicacion</url-pattern>
     </servlet-mapping>
 
     <servlet>

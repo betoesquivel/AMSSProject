@@ -57,13 +57,8 @@ public class Subscriptor {
 	public boolean agregar(String n, String t){
 		try {
       String s = "";
-      if (!t.equals("")){
-        s = "INSERT INTO subscriptor (nombre, tipo)" +
-          " VALUES ('" + n + "', '" + t + "' )";
-      }else{
-        s = "INSERT INTO subscriptor (nombre, tipo)" +
-          " VALUES ('" + n + "', " + t + " )";
-      }
+      s = "INSERT INTO subscriptor (nombre)" +
+        " VALUES ('" + n + "')";
 			 System.out.println(s);
 			 conn.stmt.executeUpdate(s);
 
