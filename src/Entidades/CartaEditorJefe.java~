@@ -59,4 +59,28 @@ public class CartaEditorJefe {
 	      return true;
 	   }
 
+	public String getCartaPub (Date fecha) {
+
+		try {
+			String s = "SELECT contenido FROM cartaEditorJefe WHERE fechaPub = '" + fecha "')";
+			System.out.println(s);
+			conn.stmt.executeUpdate(s);
+			String resultado = ""
+			ResultSet rs = conn.stmt.getResultSet();
+			if (rs.next()) {			
+				
+					String contenido =  rs.getString("contenido");
+					resultado += resultado + contenido + "\n";
+				
+				
+				return( resultado );
+			} else{ return "";}
+		} catch (SQLException e) { System.out.println ("Cannot insert evaluacion" + e); 
+			return false; 
+		}
+			return true;	
+
+
+	}
+
 }
