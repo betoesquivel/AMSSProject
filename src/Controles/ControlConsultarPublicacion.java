@@ -3,13 +3,16 @@ import entidades.*;
 import java.io.*;
 
 public class ControlConsultarArticulo {
-   Articulo publicacion;
+   Articulo art;
+	CartaEditorJefe cej;
 
    public transient Conexion conexion;
 
    //Prepara la conexión que comparte con las entidades
    public ControlConsultarArticulo(){
       conexion = new Conexion();
+	art = new Articulo(conexion);
+	cej = new CartaEditorJefe(conexion);
       publicacion = new Publicacion(conexion);
    }
 
@@ -20,7 +23,8 @@ public class ControlConsultarArticulo {
 	if(p == null) {
 		return null;
 	} else {
-		String pub = p.getListaArticulos(p.fechaPub);
+		String cartaPub = cej.getCartaPub(p.fechaPub);
+		String artPub = art.getListaArticulos(p.fechaPub);
 		return pub;
 	}
 
