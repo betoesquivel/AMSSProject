@@ -42,9 +42,9 @@ public class EditorJefe {
 	   }
    }
 
-   public boolean insertEditorJefe(EditorJefe j) {
+   public boolean agregarEditorJefe(String usr) {
 	   try{
-		   conn.stmt.executeUpdate ("INSERT INTO editorJefe (idConsejo,nombre) VALUES (" + j.idConsejo + "," + j.nombre + ")");
+		   conn.stmt.executeUpdate ("INSERT INTO editorJefe (idConsejo,nombre) VALUES ('" + usr + "')");
 		   return true;
 	   } catch(SQLException e) {
 		   return false;

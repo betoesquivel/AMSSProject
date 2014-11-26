@@ -47,7 +47,7 @@ public class ControlMaestro {
      return cuenta.agregar(nueva);
    }
 
-   public boolean iniciarSesion(String usr, String contr, String tipo) {
+   public boolean iniciarSesion(String usr, String contr) {
        Cuenta verificar;
        verificar = cuenta.getCuenta(usr);
        //if (verificar.usuario.trim() == usr || verificar.contrasenia.trim() == contr) return false;

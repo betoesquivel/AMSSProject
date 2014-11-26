@@ -55,10 +55,10 @@ public class Subscriptor {
 		return null;
 	}
 
-	public boolean agregar(int i, String n, String t){
+	public boolean agregar(String n, String t){
 		try {
-			 String s = "INSERT INTO subscriptor (id, nombre, tipo)" +
-				   " VALUES ("+ i + " , '" + n + "', " + t + " )";
+			 String s = "INSERT INTO subscriptor (nombre, tipo)" +
+				   " VALUES ('" + n + "', " + t + " )";
 			 System.out.println(s);
 			 conn.stmt.executeUpdate(s);
 

@@ -43,9 +43,9 @@ public class Juez {
 	   }
    }
 
-   public boolean insertJuez(Juez j) {
+   public boolean agregarJuez(String usr) {
 	   try{
-		   conn.stmt.executeUpdate ("INSERT INTO juez (idConsejo,nombre) VALUES (" + j.idConsejo + "," + j.nombre + ")");
+		   conn.stmt.executeUpdate ("INSERT INTO juez (idConsejo,nombre) VALUES ('" + usr + "')");
 		   return true;
 	   } catch(SQLException e) {
 		   return false;
