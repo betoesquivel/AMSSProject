@@ -38,6 +38,24 @@
     </servlet-mapping>
 
     <servlet>
+      <servlet-name>ConsultarEstatusArticulo</servlet-name>
+      <servlet-class>interfaces.InterfazEstatusArticulo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConsultarEstatusArticulo</servlet-name>
+        <url-pattern>/ConsultarEstatusArticulo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+      <servlet-name>SubirArticulo</servlet-name>
+      <servlet-class>interfaces.InterfazSubirArticulo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubirArticulo</servlet-name>
+        <url-pattern>/SubirArticulo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
       <servlet-name>logoff</servlet-name>
       <servlet-class>interfaces.InterfazLogOff</servlet-class>
     </servlet>

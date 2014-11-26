@@ -42,7 +42,7 @@ public class Juez {
 	   }
    }
 
-   public boolean agregarJuez(String usr) {
+   public boolean agregar(String usr) {
 	   try{
 		   conn.stmt.executeUpdate ("INSERT INTO juez (idConsejo,nombre) VALUES ('" + usr + "')");
 		   return true;

@@ -63,17 +63,24 @@ public class InterfazIngresar extends HttpServlet {
     //La funcion trim() elimina espacios antes y despues del valor
     String usuario = thisRequest.getParameter("usuario").trim();
     String contrasenia = thisRequest.getParameter("contrasenia").trim();
-    boolean existente = cm.iniciarSesion(usuario, contrasenia, "sub");
-//    Cuenta obtenida = cm.iniciarSesion(usuario, contrasenia, "sub");
-    if (existente){
+    String tipo = cm.iniciarSesion(usuario, contrasenia);
+    if (!tipo.equals("")){
         HttpSession session = thisRequest.getSession();
         session.setAttribute("user", usuario);
-	//session.setAttribute("user", usuario);
+        session.setAttribute("tipo", tipo);
 
         String u = (String) session.getAttribute("user");
        out.println("<p>Bienvenido " + u + ", ha sido loggeado.</p>");
 
-       out.println("<form method=\"GET\" action=\"menuSubscriptor.html\">");
+       if (tipo.equals("aut")){
+         out.println("<form method=\"GET\" action=\"menuAutor.html\">");
+       }else if (tipo.equals("sub")) {
+         out.println("<form method=\"GET\" action=\"menuSubscriptor.html\">");
+       }else if (tipo.equals("jue")) {
+         out.println("<form method=\"GET\" action=\"menuJuez.html\">");
+       }else if (tipo.equals("edi")) {
+         out.println("<form method=\"GET\" action=\"menuEditorJefe.html\">");
+       }
        out.println("<p><input type=\"submit\" value=\"Continuar\"name=\"B2\"></p>");
        out.println("</form>");
 

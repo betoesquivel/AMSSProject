@@ -35,16 +35,16 @@ public class InterfazEstatusArticulo extends HttpServlet {
     String operacion = request.getParameter("operacion");
     if(operacion == null){ // El menu nos envia un parametro para indicar el inicio de una transaccion
       iniciarEstatusArticulo();
-    }else if(operacion.equals("subir")){
+    }else if(operacion.equals("estatus")){
       verEstatusArticulo();
     }
 
   }
 
   public void iniciarEstatusArticulo() {
-    out.println("<p>Introduzca la Cuenta</p>");
-    out.println("<form method=\"GET\" action=\"Ingresar\">");
-    out.println("<input type=\"hidden\" name=\"operacion\" value=\"iniciar\"/>");
+    out.println("<p>Introduzca el articulo a buscar</p>");
+    out.println("<form method=\"GET\" action=\"ConsultarEstatusArticulo\">");
+    out.println("<input type=\"hidden\" name=\"operacion\" value=\"estatus\"/>");
     out.println("<p> Titulo del Articulo <input type=\"text\" name=\"titulo\" size=\"20\"></p>");
 
     out.println("<p><input type=\"submit\" value=\"Ver Estatus\"name=\"B1\"></p>");
@@ -59,10 +59,10 @@ public class InterfazEstatusArticulo extends HttpServlet {
   }
 
   public void verEstatusArticulo(){
-    cm = new ControlMaestro();
+    ca = new ControlAutor();
     //La funcion trim() elimina espacios antes y despues del valor
     String tit = thisRequest.getParameter("titulo").trim();
-//    Cuenta obtenida = cm.iniciarSesion(usuario, contrasenia, "sub");
+//    Cuenta obtenida = ca.iniciarSesion(usuario, contrasenia, "sub");
         HttpSession session = thisRequest.getSession();
         String u = (String) session.getAttribute("user");
 

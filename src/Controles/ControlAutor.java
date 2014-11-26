@@ -1,6 +1,7 @@
 package controles;
 import entidades.*;
 import java.io.*;
+import java.sql.Date;
 
 public class ControlAutor {
    Cuenta cuenta;
@@ -27,6 +28,9 @@ public class ControlAutor {
 		boolean artSub = articulo.agregar(titulo, contenido, fPub, fEscrito);
 		Articulo art = articulo.getArticulo(titulo);
 
+    if (aut == null) return false;
+    if (art == null) return false;
+
 		AutorArticulo aa = new AutorArticulo(aut.id, art.id);
 		boolean aaSub = autorArt.addAutorArticulo(aa);
 
@@ -38,10 +42,12 @@ public class ControlAutor {
 	public String estatusArt(String usr, String titulo) {
 		Articulo art = articulo.getArticulo(titulo);
 		
+    if (art == null) return "";
+
 		if (art.fechaP == null) {
-			return "";
-		} else {
 			return "En revision";
+		} else {
+			return "Ha sido publicado";
 		}
 
 

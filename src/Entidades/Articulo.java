@@ -11,7 +11,7 @@ public class Articulo {
 	public Date fechaE;
 	private transient Conexion conn;
 
-	public Articulo(int i, String t, String c, Date p, Date e) {
+	public Articulo(int i, String t, String c, Date e, Date p) {
 		this.id = i;
 		this.titulo = t;
 		this.contenido = c;
@@ -41,16 +41,16 @@ public class Articulo {
 	}
 	   public Articulo getArticulo(String t){
 		try {
-			conn.stmt.executeQuery ("SELECT id, titulo, contenido, fechaPublicacion, FechaEscritura FROM articulo WHERE titulo = '" + t + "'");
+			conn.stmt.executeQuery ("SELECT * FROM articulo WHERE titulo = '" + t + "'");
 			ResultSet rs = conn.stmt.getResultSet();
 			if (rs.next()) { //Va al primer registro si lo hay
 				int nArt = rs.getInt ("id");
 				String titulo = rs.getString("titulo");
 				String contenido =  rs.getString("contenido");
+				Date fEsc = rs.getDate("fechaEscritura");
 				Date fPub = rs.getDate("fechaPub");
-				Date fEsc = rs.getDate("fechaEsc");
 				rs.close();
-				Articulo resultado = new Articulo(nArt, titulo, contenido, fPub, fEsc);
+				Articulo resultado = new Articulo(nArt, titulo, contenido, fEsc, fPub);
 				return( resultado );
 			}else{ return null;}
 			} catch (SQLException e) {System.out.println("Excepcion en validar " + e);}
@@ -59,9 +59,9 @@ public class Articulo {
 
 	   public boolean agregar(String titulo, String contenido, Date fechaPub, Date fechaEsc){
 	      try {
-		 String s = "INSERT INTO articulo (titulo, contenido, fechaPublicacion, FechaEscritura)" +
-		           " VALUES ('" + titulo + " , '" + contenido + "', " + fechaPub + "', " + fechaEsc + " )";
-		 System.out.println(s);
+		 String s = "INSERT INTO articulo (titulo, contenido, fechaEscritura)" +
+		           " VALUES ('" + titulo + "' , '" + contenido + "', '" + fechaEsc + "' )";
+     System.out.println(s);
 		 conn.stmt.executeUpdate(s);
 
 	      }catch (SQLException e) { System.out.println ("Cannot update Articulo" + e ); return false;}

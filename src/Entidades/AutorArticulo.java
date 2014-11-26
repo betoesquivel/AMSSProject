@@ -30,7 +30,7 @@ public class AutorArticulo {
 
    public boolean addAutorArticulo(AutorArticulo aa){
       try {
-    	  conn.stmt.executeUpdate ("INSERT INTO autorArticulo(idAutor, idArticulo) VALUES('"+aa.idAutor+"','"+aa.idArticulo+"')");
+    	  conn.stmt.executeUpdate ("INSERT INTO autorArticulo(idAutor, idArticulo) VALUES("+aa.idAutor+","+aa.idArticulo+")");
       } catch (SQLException e) {System.out.println ("Cannot getAutorArticulo()" + e);
       return false;
       }
