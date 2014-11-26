@@ -5,6 +5,7 @@ import java.io.*;
 public class ControlConsultarArticulo {
    Articulo art;
 	CartaEditorJefe cej;
+	Publicacion publicacion;
 
    public transient Conexion conexion;
 
