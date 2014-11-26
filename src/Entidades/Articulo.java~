@@ -90,5 +90,29 @@ public class Articulo {
 			return true;
 	}
 
+	public String getListaArtPublicacion (Date fecha) {
+
+		try {
+			String s = "SELECT contenido FROM articulo WHERE fechaPub = '" + fecha "')";
+			System.out.println(s);
+			conn.stmt.executeUpdate(s);
+			String resultado = ""
+			ResultSet rs = conn.stmt.getResultSet();
+			if (rs.next()) {			
+				while (rs.next()) { //Va al primer registro si lo hay
+					String contenido =  rs.getString("contenido");
+					resultado += resultado + contenido + "\n";
+				
+				}
+				return( resultado );
+			} else{ return null;}
+		} catch (SQLException e) { System.out.println ("Cannot insert evaluacion" + e); 
+			return false; 
+		}
+			return true;	
+
+
+	}
+
 
 }
