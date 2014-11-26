@@ -6,13 +6,13 @@ public class Subscriptor {
 
 	public int id;
 	public String nombre;
-	public String tipo;
+  public String tipo;
 	private transient Conexion conn;
 
 	public Subscriptor(int i, String n, String t) {
 		this.id = i;
 		this.nombre = n;
-		this.tipo = t;
+    this.tipo = t;
 	}
 
 	public Subscriptor(Conexion c){
@@ -39,9 +39,9 @@ public class Subscriptor {
 	}
 
 
-	public Subscriptor getSubscriptor(int id){
+	public Subscriptor getSubscriptor(String u){
 		try {
-			conn.stmt.executeQuery ("SELECT id, nombre, tipo FROM subscriptor WHERE id = " + id);
+			conn.stmt.executeQuery ("SELECT id, nombre, tipo FROM subscriptor WHERE nombre = '" + u + "'");
 			ResultSet rs = conn.stmt.getResultSet();
 			if (rs.next()) { //Va al primer registro si lo hay
 				int i = rs.getInt ("id");
@@ -75,7 +75,6 @@ public class Subscriptor {
 		}catch (SQLException e) { System.out.println ("Cannot delete Subscriptor" + e );  return false;}
 		return true;
 	}
-
 
 
 }

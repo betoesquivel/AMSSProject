@@ -56,6 +56,7 @@ CREATE TABLE `autor` (
 DROP TABLE IF EXISTS `cartaEditorJefe`;
 CREATE TABLE `cartaEditorJefe` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(50) UNIQUE NOT NULL,
   `contenido` longtext,
   `idEditor` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -173,6 +174,7 @@ CREATE TABLE `subscripcion` (
   `idSubscriptor` int(11) NOT NULL,
   `anios` int(11) DEFAULT NULL,
   `total` double DEFAULT NULL,
+  `fechaInicio` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -183,7 +185,7 @@ DROP TABLE IF EXISTS `subscriptor`;
 CREATE TABLE `subscriptor` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
-  `tipo` varchar(30) NOT NULL,
+  `tipo` varchar(30),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
