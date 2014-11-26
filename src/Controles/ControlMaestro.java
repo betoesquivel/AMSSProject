@@ -50,7 +50,7 @@ public class ControlMaestro {
      }else if (tipo.equals("sub")) {
        otra = subscriptor.agregar(usr,null);
      }else if (tipo.equals("jue")) {
-       otra = juez.agregarJuez(usr);
+       otra = juez.agregar(usr);
      }else if (tipo.equals("edi")) {
        otra = editorJefe.agregar(usr);
      }

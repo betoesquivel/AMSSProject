@@ -28,11 +28,12 @@ public class ControlAutor {
 		boolean artSub = articulo.agregar(titulo, contenido, fPub, fEscrito);
 		Articulo art = articulo.getArticulo(titulo);
 
+    if (aut == null) return false;
+
 		AutorArticulo aa = new AutorArticulo(aut.id, art.id);
 		boolean aaSub = autorArt.addAutorArticulo(aa);
 
-//		return (artSub && aaSub);
-  return true;
+		return (artSub && aaSub);
 
 	}
 
