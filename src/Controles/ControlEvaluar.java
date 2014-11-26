@@ -25,7 +25,7 @@ public class ControlEvaluar {
      Articulo evaluar =  articulo.getArticulo(titulo);
 
       Juez evaluador =  juez.getJuez(nomJ);
-     return evaluar.evaluarArticulo(evaluar.id, evaluador.id, coment, calif);
+     return evaluar.evaluarArticulo(evaluador.id, evaluar.id, coment, calif);
 
    }
 	

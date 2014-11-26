@@ -61,7 +61,7 @@ public class InterfazEvaluarArticulo extends HttpServlet {
   }
 
   public void evaluacionArticulo(){
-    cm = new ControlMaestro();
+    ce = new ControlEvaluar();
     //La funcion trim() elimina espacios antes y despues del valor
     String titulo = thisRequest.getParameter("titulo").trim();
     int calificacion = thisRequest.getParameter("calif").trim();

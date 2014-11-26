@@ -71,7 +71,7 @@ public class InterfazConsultarArticulo extends HttpServlet {
         HttpSession session = thisRequest.getSession();
         String u = (String) session.getAttribute("user");
 
-	String cont = cca.consultarArticulo(tit);
+	String cont = consultarArticulo(tit);
 	String t = (String) session.getAttribute("tipo"); 
 	
 	if(!cont.equals("")) {

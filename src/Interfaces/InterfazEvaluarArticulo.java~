@@ -61,7 +61,7 @@ public class InterfazEvaluarArticulo extends HttpServlet {
   }
 
   public void evaluacionArticulo(){
-    cm = new ControlMaestro();
+    ce = new ControlEvaluar();
     //La funcion trim() elimina espacios antes y despues del valor
     String titulo = thisRequest.getParameter("titulo").trim();
     int calificacion = thisRequest.getParameter("calif").trim();
@@ -71,7 +71,7 @@ public class InterfazEvaluarArticulo extends HttpServlet {
         HttpSession session = thisRequest.getSession();
         String u = (String) session.getAttribute("user");
 
-	boolean evaluado = ce.evaluar(titulo, calificacion, comentarios); 
+	boolean evaluado = ce.evaluar(titulo, u, calificacion, comentarios); 
 	
 	if(evaluado) {
        out.println("<p>" + u + ", has evaluado el articulo:  " + titulo + ".</p>");
