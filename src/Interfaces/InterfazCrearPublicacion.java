@@ -43,9 +43,10 @@ public class InterfazCrearPublicacion extends HttpServlet {
   }
 
   public void iniciarCrearPublicacion() {
-    out.println("<p>Introduzca la Cuenta</p>");
+    out.println("<p>Introduzca el listado del </p>");
     out.println("<form method=\"GET\" action=\"CrearPublicacion\">");
     out.println("<input type=\"hidden\" name=\"operacion\" value=\"crearPub\"/>");
+    out.println("<p> Titulo Publicacion  <input type=\"text\" name=\"tPub\" size=\"20\"></p>");
     out.println("<p> Fecha de Publicacion (yyyy-mm-dd)  <input type=\"text\" name=\"fPub\" size=\"20\"></p>");
     out.println("<p> Titulo Articulo 1  <input type=\"text\" name=\"tArt1\" size=\"20\"></p>");
     out.println("<p> Titulo Articulo 2  <input type=\"text\" name=\"tArt2\" size=\"20\"></p>");
@@ -69,6 +70,7 @@ public class InterfazCrearPublicacion extends HttpServlet {
   public void crearPublicacion(){
     ccp = new ControlCrearPublicacion();
     //La funcion trim() elimina espacios antes y despues del valor
+    String tpub = thisRequest.getParameter("tPub").trim();
     String tit1 = thisRequest.getParameter("tArt1").trim();
     String tit2 = thisRequest.getParameter("tArt2").trim();
     String tit3 = thisRequest.getParameter("tArt3").trim();
@@ -82,7 +84,8 @@ public class InterfazCrearPublicacion extends HttpServlet {
 //    Cuenta obtenida = cm.iniciarSesion(usuario, contrasenia, "sub");
         HttpSession session = thisRequest.getSession();
         String u = (String) session.getAttribute("user");
-
+	
+	boolean tp = ccp.crearPublicacion(tpub, fpub);
 	boolean a1 = ccp.publicarArticulo(tit1, fpub);
 	boolean a2 = ccp.publicarArticulo(tit2, fpub);
 	boolean a3 = ccp.publicarArticulo(tit3, fpub);
@@ -91,7 +94,7 @@ public class InterfazCrearPublicacion extends HttpServlet {
 	boolean a6 = ccp.publicarArticulo(tit6, fpub);
 
 	
-	if(a1 && a2 && a3 && a4 && a5 && a6) {
+	if(a1 && a2 && a3 && a4 && a5 && a6 && tp) {
        out.println("<p>Gracias " + u + ", la creacion de la publicacion fue exitosa.</p>");
 
        out.println("<form method=\"GET\" action=\"menuEditorJefe.html\">");

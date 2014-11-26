@@ -45,7 +45,7 @@ public class InterfazConsultarPublicacion extends HttpServlet {
     out.println("<p>Introduzca el titulo de la publicacion a consultar</p>");
     out.println("<form method=\"GET\" action=\"ConsultarPublicacion\">");
     out.println("<input type=\"hidden\" name=\"operacion\" value=\"verPub\"/>");
-    out.println("<p> Titulo del Articulo <input type=\"text\" name=\"titulo\" size=\"50\"></p>");
+    out.println("<p> Titulo de la Publicacion <input type=\"text\" name=\"titulo\" size=\"50\"></p>");
 
     out.println("<p><input type=\"submit\" value=\"Ver Publicacion\"name=\"B1\"></p>");
     out.println("</form>");
