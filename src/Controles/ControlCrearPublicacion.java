@@ -28,9 +28,8 @@ public class ControlCrearPublicacion {
 	}
 
 	public boolean publicarArticulo(String titulo, Date fpub) {
-		Articulo art = articulo.getArticulo(titulo);
 		
-		boolean publicado = art.pubArticulo(titulo, fpub);
+		boolean publicado = articulo.pubArticulo(titulo, fpub);
 
 		return publicado;
 

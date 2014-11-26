@@ -44,7 +44,7 @@ public class InterfazSubirCarta extends HttpServlet {
 
   public void iniciarSubirCarta() {
     out.println("<p>Subir Titulo y Contenido de la carta</p>");
-    out.println("<form method=\"GET\" action=\"SubirCartaEditor\">");
+    out.println("<form method=\"GET\" action=\"SubirCarta\">");
     out.println("<input type=\"hidden\" name=\"operacion\" value=\"subir\"/>");
     out.println("<p> Titulo  <input type=\"text\" name=\"titulo\" size=\"20\"></p>");
     out.println("<p> Contenido  <input type=\"textarea\" name=\"contenido\" ></p>");

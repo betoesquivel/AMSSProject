@@ -77,6 +77,7 @@ public class Articulo {
 	      }catch (SQLException e) { System.out.println ("Cannot delete Articulo" + e ); return false;}
 		return true;
 	   }
+
 	public boolean evaluarArticulo(int idJ, int idA, String coment, int c) {
 
 		try {
@@ -95,17 +96,16 @@ public class Articulo {
 		try {
 			String s = "SELECT contenido FROM articulo WHERE fechaPub = '" + fecha +"')";
 			System.out.println(s);
-			conn.stmt.executeUpdate(s);
+			conn.stmt.executeQuery(s);
 			String resultado = "";
 			ResultSet rs = conn.stmt.getResultSet();
 			if (rs.next()) {			
-				while (rs.next()) { //Va al primer registro si lo hay
-					String contenido =  rs.getString("contenido");
-					resultado += resultado + contenido + "\n";
-				
-				}
+				do {
+          String contenido =  rs.getString("contenido");
+          resultado += contenido + "\n";
+        } while(rs.next());
 				return( resultado );
-			} else{ return "";}
+      } else{ return "";}
 		} catch (SQLException e) { System.out.println ("Cannot insert evaluacion" + e); 
 			return "";
 		}
@@ -116,9 +116,8 @@ public class Articulo {
 	public boolean pubArticulo(String t, Date f) {
 		
 		try {
-			String s = "UPDATE articulo SET fechaPublicacion = '" + f + "' WHERE titulo = '" + t + "'";
+			String s = "UPDATE articulo SET fechaPub= '" + f + "' WHERE titulo = '" + t + "'";
 			conn.stmt.executeUpdate(s);
-
 		}catch (SQLException e) {System.out.println ("Cannot update Articulo" + e); return false;}
 		return true;
 

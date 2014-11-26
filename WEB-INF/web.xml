@@ -93,6 +93,24 @@
     </servlet-mapping>
 
     <servlet>
+      <servlet-name>ContratarSubscripcion</servlet-name>
+      <servlet-class>interfaces.InterfazContratarSub</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ContratarSubscripcion</servlet-name>
+        <url-pattern>/ContratarSubscripcion</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+      <servlet-name>RenovarSubscripcion</servlet-name>
+      <servlet-class>interfaces.InterfazRenovarSub</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RenovarSubscripcion</servlet-name>
+        <url-pattern>/RenovarSubscripcion</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
       <servlet-name>logoff</servlet-name>
       <servlet-class>interfaces.InterfazLogOff</servlet-class>
     </servlet>

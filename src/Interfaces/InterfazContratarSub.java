@@ -43,9 +43,9 @@ public class InterfazContratarSub extends HttpServlet {
 
   public void iniciarContratarSubscripcion() {
     out.println("<p>Introduzca la cantidad de anios a contratar:</p>");
-    out.println("<form method=\"GET\" action=\"ContratarSub\">");
+    out.println("<form method=\"GET\" action=\"ContratarSubscripcion\">");
     out.println("<input type=\"hidden\" name=\"operacion\" value=\"contratar\"/>");
-    out.println("<p> Anios <input type=\"range\" max=\"5\" min=\"1\" name=\"anios\"></p>");
+    out.println("<p> Anios <input type=\"number\" max=\"5\" min=\"1\" step=\"1\" name=\"anios\" value=\"1\"></p>");
 
     out.println("<p><input type=\"submit\" value=\"Contratar Subscripcion\"name=\"B1\"></p>");
     out.println("<p>Se realizara el cargo correspondiente en mi cuenta.</p>");

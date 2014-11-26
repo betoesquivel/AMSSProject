@@ -70,7 +70,7 @@ public class CartaEditorJefe {
 	public String getCartaPub (Date fecha) {
 
 		try {
-			String s = "SELECT contenido FROM cartaEditorJefe WHERE fechaPub = '" + fecha +"')";
+			String s = "SELECT * FROM cartaEditorJefe WHERE fechaPub = '" + fecha +"')";
 			System.out.println(s);
 			conn.stmt.executeUpdate(s);
 			String resultado = "";
@@ -78,13 +78,13 @@ public class CartaEditorJefe {
 			if (rs.next()) {			
 				
 					String contenido =  rs.getString("contenido");
-					resultado += resultado + contenido + "\n";
+					resultado += contenido + "\n";
 				
 				
 				return( resultado );
-			} else{ return "";}
+			} else{ return "Nothing on resultset";}
 		} catch (SQLException e) { System.out.println ("Cannot insert evaluacion" + e); 
-			return "";
+			return "Sql exception";
 		}
 
 	}

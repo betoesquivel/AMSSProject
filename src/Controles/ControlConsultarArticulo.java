@@ -15,12 +15,12 @@ public class ControlConsultarArticulo {
 
    public String consultarArticulo(String titulo) {
      Articulo consulta =  articulo.getArticulo(titulo);
-	
-	if(consulta == null) {
-		return null;
-	} else {
-	     return consulta.contenido;
-	}
+    
+      if(consulta == null) {
+        return null;
+      } else {
+         return consulta.contenido;
+      }
 
    }
 	

@@ -43,9 +43,9 @@ public class InterfazRenovarSub extends HttpServlet {
 
   public void iniciarRenovarSubscripcion() {
     out.println("<p>Introduzca la cantidad de anios a renovar:</p>");
-    out.println("<form method=\"GET\" action=\"RenovarSub\">");
+    out.println("<form method=\"GET\" action=\"RenovarSubscripcion\">");
     out.println("<input type=\"hidden\" name=\"operacion\" value=\"renovar\"/>");
-    out.println("<p> Anios <input type=\"range\" max=\"5\" min=\"1\" name=\"anios\"></p>");
+    out.println("<p> Anios <input type=\"number\" max=\"5\" min=\"1\" step=\"1\" name=\"anios\" value=\"1\"></p>");
 
     out.println("<p><input type=\"submit\" value=\"Renovar Subscripcion\"name=\"B1\"></p>");
     out.println("<p>Se realizara el cargo correspondiente en mi cuenta.</p>");

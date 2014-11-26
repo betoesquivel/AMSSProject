@@ -23,11 +23,9 @@ public class ControlEvaluar {
 
    public boolean evaluar(String titulo, String nomJ, int calif, String coment) {
      Articulo evaluar =  articulo.getArticulo(titulo);
-      if (evaluar == null) return false;
 
       Juez evaluador =  juez.getJuez(nomJ);
-      if (evaluador == null) return false;
-     return evaluar.evaluarArticulo(evaluador.id, evaluar.id, coment, calif);
+     return articulo.evaluarArticulo(evaluador.id, evaluar.id, coment, calif);
 
    }
 	
