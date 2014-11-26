@@ -24,7 +24,7 @@ public class ControlSubscripcion {
 	}
 
 
-	public boolean renovarSubscripcion(String usr, String anios) {
+	public boolean renovarSubscripcion(String usr, int anios) {
     Subscriptor s = subscriptor.getSubscriptor(usr);
     if (s == null) return false;
     return subscripcion.renovarSubscripcion(s, anios);

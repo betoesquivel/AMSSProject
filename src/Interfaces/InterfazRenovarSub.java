@@ -6,7 +6,7 @@ import javax.servlet.http.*;
 import java.io.*;
 import java.util.*;
 
-public class InterfazContratarSub extends HttpServlet {
+public class InterfazRenovarSub extends HttpServlet {
   HttpServletResponse thisResponse;
   HttpServletRequest thisRequest;
   PrintWriter out;

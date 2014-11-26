@@ -49,11 +49,12 @@ public class InterfazConsultarArticulo extends HttpServlet {
 
     out.println("<p><input type=\"submit\" value=\"Ver Articulo\"name=\"B1\"></p>");
     out.println("</form>");
-	String t = (String) session.getAttribute("tipo");
+        HttpSession session = thisRequest.getSession();
+    String t = (String) session.getAttribute("tipo");
 	
-	if(t.equals("jue") {
+	if(t.equals("jue")) {
     out.println("<form method=\"GET\" action=\"menuJuez.html\">");
-	} else if ("edi") {
+	} else if (t.equals("edi")) {
     out.println("<form method=\"GET\" action=\"menuEditorJefe.html\">");
 	}
     out.println("<p><input type=\"submit\" value=\"Cancelar\"name=\"B2\"></p>");
@@ -70,18 +71,18 @@ public class InterfazConsultarArticulo extends HttpServlet {
 //    Cuenta obtenida = ca.iniciarSesion(usuario, contrasenia, "sub");
         HttpSession session = thisRequest.getSession();
         String u = (String) session.getAttribute("user");
+        String t = (String) session.getAttribute("tipo");
 
 	String cont = cca.consultarArticulo(tit);
-	String t = (String) session.getAttribute("tipo"); 
 	
 	if(!cont.equals("")) {
 	       out.println("<p>" + u + ", el articulo que solicitaste ver es el siguiente:  " + tit + ".</p>");
 	       out.println("<p> A continuacion el contenido del articulo .</p>");
 	       out.println("<p>" + cont + ".</p>");
 	
-		if(t.equals("jue") {
+		if(t.equals("jue")) {
 	    out.println("<form method=\"GET\" action=\"menuJuez.html\">");
-		} else if ("edi") {
+		} else if (t.equals("edi")) {
 	    out.println("<form method=\"GET\" action=\"menuEditorJefe.html\">");
 		}
 	       out.println("<p><input type=\"submit\" value=\"Regresar Menu\"name=\"B2\"></p>");
@@ -92,9 +93,9 @@ public class InterfazConsultarArticulo extends HttpServlet {
 	} else {
 	       out.println("<p>Lo sentimos " + u + ", no se encontro el articulo que solicitaste ver.</p>");
 	
-		if(t.equals("jue") {
+		if(t.equals("jue")) {
 	    out.println("<form method=\"GET\" action=\"menuJuez.html\">");
-		} else if ("edi") {
+		} else if (t.equals("edi")) {
 	    out.println("<form method=\"GET\" action=\"menuEditorJefe.html\">");
 		}
 	       out.println("<p><input type=\"submit\" value=\"Regresar Menu\"name=\"B2\"></p>");

@@ -70,7 +70,7 @@ public class Subscripcion {
 	   }
 
 	//renueva la suscripcion de dicho subscriptor, añadiendo las cant de años a la columna de anios actuales
-	public boolean renovarSuscripcion(Subscriptor subscriptor, int cant_anios){
+	public boolean renovarSubscripcion(Subscriptor subscriptor, int cant_anios){
 		int anios = 0;
 		try {
 			//se obtienen los años de suscripcion

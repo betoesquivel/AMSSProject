@@ -10,7 +10,7 @@ public class InterfazEvaluarArticulo extends HttpServlet {
   HttpServletResponse thisResponse;
   HttpServletRequest thisRequest;
   PrintWriter out;
-  ControlAutor ce;
+  ControlEvaluar ce;
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
     thisResponse = response;
@@ -64,7 +64,7 @@ public class InterfazEvaluarArticulo extends HttpServlet {
     ce = new ControlEvaluar();
     //La funcion trim() elimina espacios antes y despues del valor
     String titulo = thisRequest.getParameter("titulo").trim();
-    int calificacion = thisRequest.getParameter("calif").trim();
+    int calificacion = Integer.parseInt(thisRequest.getParameter("calif").trim());
     String comentarios = thisRequest.getParameter("comments").trim();
 
 //    Cuenta obtenida = cm.iniciarSesion(usuario, contrasenia, "sub");
