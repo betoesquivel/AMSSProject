@@ -12,8 +12,9 @@ public class Juez {
       this.conn = c;
    }
 
-   public Juez(int id, String nombre) {
+   public Juez(int id, int idConsejo, String nombre) {
 	   this.id = id;
+	   this.idConsejo = idConsejo;
 	   this.nombre = nombre;
    }
 
