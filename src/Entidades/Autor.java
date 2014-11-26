@@ -39,7 +39,7 @@ public class Autor {
  
         public Autor getAutor(String n){
                 try {
-                        conn.stmt.executeQuery ("SELECT id, nombre, fechaUltimaPublicacion FROM autor WHERE nombre = " + n + "'");
+                        conn.stmt.executeQuery ("SELECT id, nombre, fechaUltimaPublicacion FROM autor WHERE nombre = '" + n + "'");
                         ResultSet rs = conn.stmt.getResultSet();
                         if (rs.next()) { //Va al primer registro si lo hay
                                 int nAut = rs.getInt ("id");
